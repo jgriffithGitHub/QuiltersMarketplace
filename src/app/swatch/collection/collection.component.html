@@ -1,0 +1,13 @@
+<div class="collection-container">
+  <h2>Your Swatch Collection</h2>
+  @for (swatch of swatches; track swatch.id) {
+  <div>
+    <a [routerLink]="['/swatch', swatch.id]">
+      <img [src]="swatch.imageUrl" alt="Swatch image" />
+      <p>{{ swatch.description }}</p>
+      <p>{{ swatch.quantityType }} - {{ swatch.quantity }}</p>
+    </a>
+  </div>
+  }
+  <button (click)="addSwatch()">Add Swatch</button>
+</div>

@@ -1,0 +1,7 @@
+<div class="swatch-detail-container">
+  <img [src]="swatch.imageUrl" alt="Swatch image" />
+  <h3>{{ swatch.description }}</h3>
+  <p>Quantity Type: {{ swatch.quantityType }}</p>
+  <p>Quantity: {{ swatch.quantity }}</p>
+  <button (click)="sendMessage()">Message Owner</button>
+</div>

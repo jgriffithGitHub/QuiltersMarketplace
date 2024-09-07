@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterLink, RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { AuthGuard } from './guards/auth.guard';
 
 import { LoginComponent } from './auth/login/login.component';
@@ -23,7 +25,10 @@ export const routes: Routes = [
   imports: [HttpClientModule,
             RouterModule.forRoot(routes)],
   exports: [RouterLink,
-            RouterModule]
+            RouterModule],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ]
 })
 
 export class AppRoutingModule { }

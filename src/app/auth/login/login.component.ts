@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';
+
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,8 +13,18 @@ export class LoginComponent {
   email: string = '';
   password: string = '';
 
+constructor(private authService: AuthService, private router: Router) {}
+
   onLogin() {
-    // Call AuthService to handle login (to be implemented)
-    console.log('Logging in with', this.email, this.password);
+    this.authService.login(this.email, this.password).subscribe({
+      next: (response) => {
+        // Navigate to the user's collection page after login
+        this.router.navigate(['/collection']);
+      },
+      error: (error) => {
+        console.error('Login error:', error);
+        alert('Login failed. Please try again.');
+      }
+    });
   }
 }

@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterLink, RouterModule, Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+
+import { AuthGuard } from './guards/auth.guard';
+
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { CollectionComponent } from './swatch/collection/collection.component';
@@ -9,15 +13,17 @@ import { ProfileComponent } from './profile/profile/profile.component';
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'collection', component: CollectionComponent },
-  { path: 'swatch/:id', component: SwatchDetailComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'collection', component: CollectionComponent, canActivate: [AuthGuard] },
+  { path: 'swatch/:id', component: SwatchDetailComponent, canActivate: [AuthGuard] },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterLink, RouterModule]
+  imports: [HttpClientModule,
+            RouterModule.forRoot(routes)],
+  exports: [RouterLink,
+            RouterModule]
 })
 
 export class AppRoutingModule { }

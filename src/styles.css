@@ -21,5 +21,6 @@ img {
 
 a {
   text-decoration: none;
-  color: inherit;
+  color: red;
+  cursor: pointer;
 }

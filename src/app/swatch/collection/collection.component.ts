@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import {RouterModule} from '@angular/router';
+import { FormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-collection',
   standalone: true,
-  imports: [RouterModule],
+  imports: [FormsModule, RouterModule],
   templateUrl: './collection.component.html',
 })
 export class CollectionComponent {

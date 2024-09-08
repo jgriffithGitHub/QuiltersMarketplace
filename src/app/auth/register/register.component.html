@@ -1,6 +1,6 @@
 <div class="register-container">
-  <h2>Register</h2>
-  <form (ngSubmit)="onRegister()">
+  <h2>Please fill in the details to create your account.</h2>
+  <form (ngSubmit)="onRegister($event)">
     <div>
       <label>Username</label>
       <input type="text" [(value)]="username" name="username" required />

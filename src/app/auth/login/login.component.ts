@@ -1,21 +1,23 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';
+import { FormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive],
+  imports: [FormsModule, RouterLink, RouterLinkActive],
   templateUrl: './login.component.html',
 })
+
 export class LoginComponent {
   email: string = '';
   password: string = '';
 
 constructor(private authService: AuthService, private router: Router) {}
 
-  onLogin() {
+  onLogin(e : Event) {
     this.authService.login(this.email, this.password).subscribe({
       next: (response) => {
         // Navigate to the user's collection page after login

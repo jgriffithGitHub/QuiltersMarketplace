@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterLink, RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { AuthGuard } from './guards/auth.guard';
@@ -22,13 +23,15 @@ export const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [HttpClientModule,
+  imports: [FormsModule, FormGroup, FormControl, Validators,
+            HttpClientModule,
             RouterModule.forRoot(routes)],
   exports: [RouterLink,
             RouterModule],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
-  ]
+  ],
+  bootstrap: [AppRoutingModule]
 })
 
 export class AppRoutingModule { }

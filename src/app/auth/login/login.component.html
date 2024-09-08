@@ -1,6 +1,6 @@
 <div class="login-container">
-  <h2>Login</h2>
-  <form (ngSubmit)="onLogin()">
+  <h2>Please login.</h2>
+  <form (ngSubmit)="onLogin($event)">
     <div>
       <label>Email</label>
       <input type="email" [(value)]="email" name="email" required />

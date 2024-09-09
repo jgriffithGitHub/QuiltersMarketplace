@@ -19,6 +19,7 @@ export class RegisterComponent {
   constructor(private authService: AuthService, private router: Router) {}
 
   onRegister(e : Event) {
+    console.log("onRegister: " + this.username + "|" + this.email + "|" + this.password);
     this.authService.register(this.username, this.email, this.password).subscribe({
       next: (response) => {
         // Navigate to login page after successful registration

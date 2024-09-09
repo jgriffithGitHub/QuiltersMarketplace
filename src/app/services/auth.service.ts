@@ -59,7 +59,6 @@ export class AuthService {
   isLoggedIn(): boolean {
     if(this.doc.defaultView)
 	{
-	  console.log(this.doc);
 	  const localStorage = this.doc.defaultView?.localStorage;
       if(localStorage)
         return (localStorage) ? !!localStorage.getItem('token') : false;
@@ -69,7 +68,6 @@ export class AuthService {
 
   // Get the current user's token
   getToken(): string | null {
-	console.log("getting token");
     if(this.doc.defaultView)
     {
       const localStorage = this.doc.defaultView?.localStorage;

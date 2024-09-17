@@ -1,1 +1,15 @@
-<p>swatch works!</p>
+<app-swatch-detail 
+   (swatchUpdate)="onSwatchUpdate($event)"
+  [app_id]="this.swatchInfo.app_id"
+  [imageUrl]="swatchInfo.imageUrl"
+  [description]="swatchInfo.description"
+  [quantityType]="swatchInfo.quantityType"
+  [quantity]="swatchInfo.quantity"
+  [editable]="swatchInfo.editable"
+ ></app-swatch-detail>
+@if(!swatchInfo.editable){
+<button (click)="sendMessage()">Message Owner</button>
+<button (click)="makeEditable()">Edit</button>
+}
+
+

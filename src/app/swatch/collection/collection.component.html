@@ -1,17 +1,8 @@
 <div class="collection-container">
   <h2>Your Swatch Collection</h2>
-  @for (swatch of swatches; track swatch.id) {
-    <!--<div style="width: 100%; overflow: hidden;">-->
-    <div style="width: 100%; height: 200px">
-      <div style="width: 200px; float: left;">
-	    <a [routerLink]="['/swatch', swatch.id]">
-          <img [src]="swatch.imageUrl" alt="Swatch image" />
-        </a>
-	  </div>
-      <div style="margin-left: 220px;">
-	    <div width="50%">{{ swatch.description }}</div><div width="50%">{{ swatch.quantityType }} - {{ swatch.quantity }}</div>
-	  </div>
-    </div>		
+  @for (swatch of swatches; track swatch.app_id) {
+    <app-swatch [swatchInfo]=swatch></app-swatch>	
   }
-  <button (click)="addSwatch()">Add Swatch</button>
+  <button (click)="addSwatch()">Add Existing Swatch</button>
+  <button (click)="createSwatch()">Create New Swatch</button>
 </div>

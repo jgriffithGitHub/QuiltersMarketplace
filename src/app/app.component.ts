@@ -12,5 +12,5 @@ import { RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angul
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'Quilters Marketplace';
+  title = 'Quilters Library';
 }

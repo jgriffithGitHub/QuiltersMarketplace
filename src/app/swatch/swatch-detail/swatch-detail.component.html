@@ -1,7 +1,24 @@
 <div class="swatch-detail-container">
-  <img [src]="swatch.imageUrl" alt="Swatch image" />
-  <h3>{{ swatch.description }}</h3>
-  <p>Quantity Type: {{ swatch.quantityType }}</p>
-  <p>Quantity: {{ swatch.quantity }}</p>
-  <button (click)="sendMessage()">Message Owner</button>
+  <div style="width: 100%; height: 200px">
+  @if(editable) {
+    <div style="margin-left: 220px;">
+      <input type="text" [(ngModel)]="imageUrl" name="imageUrl" required />
+      <input type="text" [(ngModel)]="description" name="description" required />
+      <input type="text" [(ngModel)]="quantityType" name="quantityType" required />
+      <input type="text" [(ngModel)]="quantity" name="quantity" required />
+    </div>
+    <button (click)="updateDetails()">Save</button>
+    <button (click)="doneEditing()">Done</button>
+  }
+  @else {
+    <div style="width: 200px; float: left;">
+	  <a [routerLink]="['/swatch', app_id]">
+        <img [src]="imageUrl" alt="Swatch image" />
+      </a>
+	</div>
+    <div style="margin-left: 220px;">
+	  <div width="50%">{{ description }}</div><div width="50%">{{ quantityType }} - {{ quantity }}</div>
+    </div>
+  }
+  </div>
 </div>

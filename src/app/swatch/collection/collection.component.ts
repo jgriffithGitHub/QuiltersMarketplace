@@ -5,20 +5,24 @@ import { FormsModule, FormGroup, FormControl, Validators } from '@angular/forms'
 import { SwatchService } from '../../services/swatch.service';
 import { SwatchComponent } from '../swatch/swatch.component';
 import { Swatch } from '../swatch/Swatch';
+import { CollectionItemComponent } from './collectionItem.component';
 
 @Component({
   selector: 'app-collection',
   standalone: true,
-  imports: [FormsModule, RouterModule, SwatchComponent],
+  imports: [FormsModule, RouterModule, CollectionItemComponent],
   templateUrl: './collection.component.html',
 })
 
 export class CollectionComponent implements OnInit {
   swatches: Swatch[] = [];
   
-  constructor(private swatchService: SwatchService, private router: Router) {}
+  constructor(private swatchService: SwatchService, private router: Router) {
+    console.log("Constructing CollectionComponent");
+  }
 
   ngOnInit(): void {
+    console.log("CollectionComponent: ngOnInit");
     this.getSwatches();
   }
 

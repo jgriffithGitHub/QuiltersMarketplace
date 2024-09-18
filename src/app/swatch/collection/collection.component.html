@@ -1,7 +1,13 @@
 <div class="collection-container">
   <h2>Your Swatch Collection</h2>
   @for (swatch of swatches; track swatch.app_id) {
-    <app-swatch [swatchInfo]=swatch></app-swatch>	
+    <app-component-item     
+    [app_id] = swatch.app_id
+    [imageUrl] = swatch.imageUrl
+    [description] = swatch.description
+    [quantityType] = swatch.quantityType
+    [quantity]  = swatch.quantity  
+    ></app-component-item>	
   }
   <button (click)="addSwatch()">Add Existing Swatch</button>
   <button (click)="createSwatch()">Create New Swatch</button>

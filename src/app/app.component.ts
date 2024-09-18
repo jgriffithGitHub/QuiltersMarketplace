@@ -4,9 +4,7 @@ import { RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angul
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterLink,
-            RouterLinkActive,
-            RouterModule,
+  imports: [RouterModule,
             RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
